@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<script type="module"
+src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+</script>
+
+<style>
+
+body{
+
+    margin:0;
+    overflow:hidden;
+
+}
+
+model-viewer{
+
+    width:100vw;
+    height:100vh;
+
+}
+
+#ar-button{
+
+    position:absolute;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:20px 30px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    background:white;
+
+    border:2px solid black;
+
+    border-radius:10px;
+
+    z-index:100;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<model-viewer
+
+src="modelocaballo3dconejes.glb"
+
+camera-controls
+
+auto-rotate
+
+>
+
+</model-viewer>
+
+<button id="ar-button">
+
+Ver en AR
+
+</button>
+
+<script>
+
+const button = document.getElementById('ar-button');
+
+button.addEventListener('click', () => {
+
+const sceneViewerUrl =
+'intent://arvr.google.com/scene-viewer/1.0?file=' +
+encodeURIComponent(
+'https://vegamike10.github.io/CaballoAR/modelocaballo3dconejes.glb'
+) +
+'&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;';
+
+window.location.href = sceneViewerUrl;
+
+});
+
+</script>
+
+</body>
+
+</html>
