@@ -33,6 +33,7 @@ model-viewer{
     border:2px solid black;
     border-radius:10px;
     z-index:100;
+    cursor:pointer;
 }
 
 </style>
@@ -41,14 +42,18 @@ model-viewer{
 
 <body>
 
+<!-- MODELO 3D -->
 <model-viewer
-src="https://juliana728.github.io/multivariado/caballoconcampo.glb"
+src="./caballoconcampo.glb"
 camera-controls
 auto-rotate
+ar
+ar-modes="scene-viewer webxr quick-look"
 >
 
 </model-viewer>
 
+<!-- BOTÓN AR -->
 <button id="ar-button">
 Ver en AR
 </button>
@@ -59,11 +64,11 @@ const button = document.getElementById('ar-button');
 
 button.addEventListener('click', () => {
 
+const url = window.location.href.replace("index.html","") + "caballoconcampo.glb";
+
 const sceneViewerUrl =
 'intent://arvr.google.com/scene-viewer/1.0?file=' +
-encodeURIComponent(
-'https://juliana728.github.io/multivariado/caballoconcampo.glb'
-) +
+encodeURIComponent(url) +
 '&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end;';
 
 window.location.href = sceneViewerUrl;
